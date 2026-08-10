@@ -178,57 +178,67 @@ function renderUniverse() {
 
 function renderProducts() {
   const target = document.querySelector("#products");
+  const rows = state.products
+    .map(
+      (product) => `
+        <tr>
+          <td>
+            <div class="product-name">${escapeHtml(product.product)}</div>
+            <div class="tag-row">${(product.districts || []).map((district) => `<span class="tag">${escapeHtml(district)}</span>`).join("")}</div>
+          </td>
+          <td>${escapeHtml((product.institutionAnchors || []).join(", "))}</td>
+          <td>${escapeHtml((product.rawForms || []).join(", "))}</td>
+          <td>${escapeHtml((product.processedForms || []).join(", "))}</td>
+          <td>${escapeHtml((product.intermediateIndustrialForms || []).join(", "))}</td>
+          <td>${escapeHtml((product.byproducts || []).join(", "))}</td>
+          <td>${escapeHtml((product.buyerCategories || []).join(", "))}</td>
+          <td>${escapeHtml((product.infrastructureNeeds || []).join(", "))}</td>
+          <td>
+            <details>
+              <summary>Validation questions</summary>
+              <ul class="compact-list">${(product.validationQuestions || []).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+            </details>
+            <button class="secondary-button product-signal-button" data-product-filter="${escapeHtml(product.product)}">View signals</button>
+          </td>
+        </tr>`
+    )
+    .join("");
+
   target.innerHTML = `
     <div class="section-title">
       <div>
         <h3>Product Intelligence & Value-Chain Explorer</h3>
-        <p>Institution-oriented product possibility maps. These expand the scanner's search space before market validation.</p>
+        <p>Structured product possibility maps used to expand the scanner's search space before market validation.</p>
       </div>
     </div>
-    <div class="product-grid">
-      ${state.products
-        .map(
-          (product) => `
-          <article class="product-card">
-            <div class="product-card-head">
-              <div>
-                <p class="eyebrow">Product Intelligence</p>
-                <h4>${escapeHtml(product.product)}</h4>
-              </div>
-              <button class="secondary-button" data-product-filter="${escapeHtml(product.product)}">Signals</button>
-            </div>
-            <div class="tag-row">${product.districts.map((district) => `<span class="tag">${escapeHtml(district)}</span>`).join("")}</div>
-            ${productSection("Institution anchors", product.institutionAnchors)}
-            ${productSection("Raw forms", product.rawForms)}
-            ${productSection("Processed forms", product.processedForms)}
-            ${productSection("Intermediate / industrial forms", product.intermediateIndustrialForms)}
-            ${productSection("By-products and waste streams", product.byproducts)}
-            ${productSection("Buyer categories", product.buyerCategories)}
-            ${productSection("Infrastructure needs", product.infrastructureNeeds)}
-            <div class="product-questions">
-              <h5>Validation Questions</h5>
-              <ul>${product.validationQuestions.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-            </div>
-          </article>`
-        )
-        .join("")}
+    <div class="table-wrap product-intelligence-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Product / Districts</th>
+            <th>Institution Anchors</th>
+            <th>Raw Forms</th>
+            <th>Processed Forms</th>
+            <th>Intermediate / Industrial</th>
+            <th>By-products / Waste</th>
+            <th>Buyer Categories</th>
+            <th>Infrastructure Needs</th>
+            <th>Validation / Signals</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${rows || `<tr><td colspan="9">No product intelligence records available.</td></tr>`}
+        </tbody>
+      </table>
     </div>
   `;
+
   target.querySelectorAll("[data-product-filter]").forEach((button) => {
     button.addEventListener("click", () => {
       state.pendingSignalFilter = { product: button.dataset.productFilter };
       setScreen("signals");
     });
   });
-}
-
-function productSection(label, values) {
-  return `
-    <div class="product-section">
-      <h5>${escapeHtml(label)}</h5>
-      <p>${escapeHtml((values || []).join(", "))}</p>
-    </div>
-  `;
 }
 
 function renderSignals() {
@@ -523,6 +533,7 @@ function render() {
   if (!state.dashboard || !state.scope) return;
   if (state.activeScreen === "dashboard") renderDashboard();
   if (state.activeScreen === "universe") renderUniverse();
+  if (state.activeScreen === "products") renderProducts();
   if (state.activeScreen === "signals") renderSignals();
   if (state.activeScreen === "sources") renderSources();
   if (state.activeScreen === "runs") renderRuns();
