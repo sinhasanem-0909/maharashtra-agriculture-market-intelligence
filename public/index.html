@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Maharashtra Agriculture Market Intelligence</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">MI</div>
+          <div>
+            <h1>Maharashtra Agriculture Market Intelligence</h1>
+            <p>Evidence-backed market scanner</p>
+          </div>
+        </div>
+        <nav class="nav" aria-label="Primary">
+          <button class="nav-item active" data-screen="dashboard">Dashboard</button>
+          <button class="nav-item" data-screen="universe">Market Universe</button>
+          <button class="nav-item" data-screen="products">Product Intelligence</button>
+          <button class="nav-item" data-screen="signals">Market Signals</button>
+          <button class="nav-item" data-screen="sources">Research Sources</button>
+          <button class="nav-item" data-screen="runs">Research Runs</button>
+          <button class="nav-item" data-screen="watchlist">Watchlist</button>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">V1 Research Agent</p>
+            <h2>MAHARASHTRA MARKET & DEMAND SCANNER</h2>
+          </div>
+          <button id="refreshButton" class="primary-button">Refresh Market Intelligence</button>
+        </header>
+
+        <section id="statusBanner" class="status-banner hidden" aria-live="polite"></section>
+
+        <section id="dashboard" class="screen active"></section>
+        <section id="universe" class="screen"></section>
+        <section id="products" class="screen"></section>
+        <section id="signals" class="screen"></section>
+        <section id="sources" class="screen"></section>
+        <section id="runs" class="screen"></section>
+        <section id="watchlist" class="screen"></section>
+      </main>
+    </div>
+
+    <dialog id="signalDialog" class="detail-dialog">
+      <form method="dialog">
+        <button class="dialog-close" aria-label="Close">x</button>
+      </form>
+      <div id="signalDetail"></div>
+    </dialog>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

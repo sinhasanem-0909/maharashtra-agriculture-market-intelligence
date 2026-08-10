@@ -1,0 +1,14 @@
+{
+  "name": "maharashtra-agriculture-market-intelligence",
+  "version": "1.0.0",
+  "description": "Evidence-backed agriculture market intelligence scanner for selected Maharashtra districts.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "start:alt": "node server.js --port 8080",
+    "start:8080": "node server.js --port 8080"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
