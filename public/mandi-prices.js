@@ -2,6 +2,11 @@ function mandiEscape(value) {
   return String(value ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/\"/g, "&quot;").replace(/'/g, "&#39;");
 }
 
+function mandiNumber(value, decimals = 2) {
+  if (value === null || value === undefined || value === "" || !Number.isFinite(Number(value))) return "—";
+  return Number(value).toFixed(decimals).replace(/\.00$/, "").replace(/(\.\d)0$/, "$1");
+}
+
 async function renderMandiPrices(product, target) {
   target.innerHTML = `<div class="research-panel"><h4>Mandi Prices & Arrivals</h4><p>Fetching live Maharashtra market data…</p></div>`;
   try {
@@ -42,11 +47,11 @@ async function renderMandiPrices(product, target) {
       <div class="universe-summary mandi-summary">
         <div class="universe-stat"><span>Markets reporting</span><strong>${markets.size}</strong><small>Source returned</small></div>
         <div class="universe-stat"><span>Latest date</span><strong>${mandiEscape(latestDate)}</strong><small>Source-reported</small></div>
-        <div class="universe-stat"><span>Average reported modal price</span><strong>${averageModal === null ? "Not available" : `₹${averageModal.toFixed(0)}`}</strong><small>Across ${markets.size} reporting market${markets.size === 1 ? "" : "s"}</small></div>
-        <div class="universe-stat"><span>Day-on-day</span><strong>${change === null ? "Not available" : `${change >= 0 ? "+" : ""}${change.toFixed(1)}%`}</strong><small>Derived from source modal prices</small></div>
+        <div class="universe-stat"><span>Average reported modal price</span><strong>${averageModal === null ? "Not available" : `₹${mandiNumber(averageModal)}`}</strong><small>Across ${markets.size} reporting market${markets.size === 1 ? "" : "s"}</small></div>
+        <div class="universe-stat"><span>Day-on-day</span><strong>${change === null ? "Not available" : `${change >= 0 ? "+" : ""}${mandiNumber(change)}%`}</strong><small>Derived from source modal prices</small></div>
       </div>
-      <div class="research-panel"><h4>Recent modal-price trend</h4><p>${mandiEscape(trendNote)}</p><div class="table-wrap"><table class="mini-table"><thead><tr><th>Date</th><th>Average reported modal price</th></tr></thead><tbody>${trend.slice().reverse().map((item) => `<tr><td>${mandiEscape(item.date)}</td><td><strong>₹${item.value.toFixed(0)}</strong></td></tr>`).join("")}</tbody></table></div></div>
-      <div class="research-panel" style="margin-top:14px"><h4>Latest Maharashtra APMC records</h4><div class="table-wrap"><table class="mini-table"><thead><tr><th>Market</th><th>Variety</th><th>Grade</th><th>Arrivals</th><th>Min</th><th>Modal</th><th>Max</th><th>Date</th></tr></thead><tbody>${latestRecords.slice(0, 100).map((row) => `<tr><td>${mandiEscape(row.market || "—")}</td><td>${mandiEscape(row.variety || "—")}</td><td>${mandiEscape(row.grade || "—")}</td><td>${row.arrivals === null || row.arrivals === undefined ? "—" : mandiEscape(row.arrivals)}</td><td>${row.minPrice === null ? "—" : `₹${mandiEscape(row.minPrice)}`}</td><td><strong>${row.modalPrice === null ? "—" : `₹${mandiEscape(row.modalPrice)}`}</strong></td><td>${row.maxPrice === null ? "—" : `₹${mandiEscape(row.maxPrice)}`}</td><td>${mandiEscape(row.date || "—")}</td></tr>`).join("")}</tbody></table></div></div>
+      <div class="research-panel"><h4>Recent modal-price trend</h4><p>${mandiEscape(trendNote)}</p><div class="table-wrap"><table class="mini-table"><thead><tr><th>Date</th><th>Average reported modal price</th></tr></thead><tbody>${trend.slice().reverse().map((item) => `<tr><td>${mandiEscape(item.date)}</td><td><strong>₹${mandiNumber(item.value)}</strong></td></tr>`).join("")}</tbody></table></div></div>
+      <div class="research-panel" style="margin-top:14px"><h4>Latest Maharashtra APMC records</h4><div class="table-wrap"><table class="mini-table"><thead><tr><th>Market</th><th>Variety</th><th>Grade</th><th>Arrivals</th><th>Min</th><th>Modal</th><th>Max</th><th>Date</th></tr></thead><tbody>${latestRecords.slice(0, 100).map((row) => `<tr><td>${mandiEscape(row.market || "—")}</td><td>${mandiEscape(row.variety || "—")}</td><td>${mandiEscape(row.grade || "—")}</td><td>${row.arrivals === null || row.arrivals === undefined ? "—" : mandiNumber(row.arrivals)}</td><td>${row.minPrice === null ? "—" : `₹${mandiNumber(row.minPrice)}`}</td><td><strong>${row.modalPrice === null ? "—" : `₹${mandiNumber(row.modalPrice)}`}</strong></td><td>${row.maxPrice === null ? "—" : `₹${mandiNumber(row.maxPrice)}`}</td><td>${mandiEscape(row.date || "—")}</td></tr>`).join("")}</tbody></table></div></div>
       <p class="source-line">Source: ${sourceLink}. The original government source is retained as evidence.</p>`;
   } catch (error) {
     target.innerHTML = `<div class="data-availability"><strong>Live mandi data could not be fetched</strong><p>${mandiEscape(error instanceof Error ? error.message : "Unknown error")}</p><span>No substitute or estimated price is shown.</span></div>`;
