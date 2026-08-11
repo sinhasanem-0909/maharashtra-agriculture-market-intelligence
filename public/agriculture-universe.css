@@ -7,11 +7,18 @@
 .universe-stat { padding: 16px; border: 1px solid #d9dee7; border-radius: 10px; background: #fff; display: flex; flex-direction: column; gap: 5px; }
 .universe-stat strong { font-size: 22px; color: #172033; }
 .research-note { margin-bottom: 14px; padding: 12px 14px; background: #f4f7fb; border-left: 3px solid #52759c; color: #3c4758; }
-.agriculture-table table { min-width: 1200px; }
+.agriculture-category-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin: 0 0 18px; border-bottom: 1px solid #d9dee7; padding-bottom: 8px; }
+.agriculture-category-tab { border: 1px solid #d9dee7; background: #fff; border-radius: 8px; padding: 10px 14px; color: #4d596b; cursor: pointer; font-weight: 600; }
+.agriculture-category-tab span { margin-left: 7px; color: #8a94a3; font-size: 12px; font-weight: 500; }
+.agriculture-category-tab.active { background: #183b66; border-color: #183b66; color: #fff; }
+.agriculture-category-tab.active span { color: #d9e5f3; }
+.category-header { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; margin-bottom: 14px; }
+.category-header h3 { margin: 0 0 5px; }
+.agriculture-table table { min-width: 1000px; }
 .agriculture-table th { white-space: nowrap; }
 .data-status { display: inline-block; color: #687386; font-size: 12px; background: #f1f3f6; border-radius: 999px; padding: 3px 7px; white-space: nowrap; }
 .commodity-header { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; margin-bottom: 16px; }
-.commodity-snapshot { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 18px; }
+.commodity-snapshot { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 18px; }
 .commodity-snapshot > div { padding: 14px; border: 1px solid #d9dee7; border-radius: 10px; background: #fff; display: flex; flex-direction: column; gap: 5px; }
 .commodity-snapshot strong { font-size: 18px; color: #172033; }
 .commodity-tabs { display: flex; gap: 4px; overflow-x: auto; border-bottom: 1px solid #d9dee7; margin-bottom: 18px; }
@@ -31,5 +38,5 @@
 .mandi-kpis > div { padding: 12px; border: 1px solid #e6e9ee; border-radius: 8px; display: flex; flex-direction: column; gap: 5px; }
 .mandi-kpis strong { font-size: 18px; color: #172033; }
 #mandiPriceContent .table-wrap { overflow-x: auto; }
-@media (max-width: 1100px) { .universe-summary { grid-template-columns: repeat(2, 1fr); } .commodity-snapshot { grid-template-columns: repeat(3, 1fr); } .mandi-kpis { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 700px) { .universe-summary, .research-grid, .commodity-snapshot, .mandi-kpis { grid-template-columns: 1fr; } .commodity-header { flex-direction: column; } .source-chip { min-width: 0; } }
+@media (max-width: 1100px) { .universe-summary { grid-template-columns: repeat(2, 1fr); } .commodity-snapshot { grid-template-columns: repeat(2, 1fr); } .mandi-kpis { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .universe-summary, .research-grid, .commodity-snapshot, .mandi-kpis { grid-template-columns: 1fr; } .commodity-header, .category-header { flex-direction: column; } .source-chip { min-width: 0; } }
