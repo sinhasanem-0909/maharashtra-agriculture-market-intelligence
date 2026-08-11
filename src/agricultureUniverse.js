@@ -1,5 +1,50 @@
 const STATE_APY = require("../data/agriculture/state-apy-2025-26.json");
 
+const AGRICULTURE_DATA_SOURCES = [
+  {
+    id: "maharashtra-state-apy-2025-26",
+    name: "Department of Agriculture, Government of Maharashtra — State APY 2025–26 Third Advance Estimates",
+    url: "https://krishi.maharashtra.gov.in/Site/Upload/GR/State_2026.pdf",
+    role: "State crop area, production and productivity",
+    status: "ingested"
+  },
+  {
+    id: "maharashtra-district-apy-2025-26",
+    name: "Department of Agriculture, Government of Maharashtra — District-wise APY 2025–26 Third Advance Estimates",
+    url: "https://krishi.maharashtra.gov.in/Site/Common/ViewGr.aspx?Doctype=01ce19af-d065-4817-ac1a-71c1c0f8874d%3FMenuID%3D2911",
+    role: "District crop area, production and productivity",
+    status: "source-identified"
+  },
+  {
+    id: "agmarknet",
+    name: "AGMARKNET",
+    url: "https://agmarknet.gov.in/",
+    role: "Mandi arrivals, minimum, maximum and modal prices",
+    status: "source-identified"
+  },
+  {
+    id: "maharashtra-price-monitoring",
+    name: "Department of Agriculture, Government of Maharashtra — Weekly Price Monitoring Reports",
+    url: "https://krishi.maharashtra.gov.in/Site/Common/ViewGr.aspx?Doctype=5e6c3729-a3c8-476e-85d7-b0ce4a2c97c9%3FMenuID%3D1103",
+    role: "State market-price monitoring and price outlook",
+    status: "source-identified"
+  },
+  {
+    id: "des-apy",
+    name: "Directorate of Economics and Statistics, Government of India — Area, Production & Yield",
+    url: "https://data.desagri.gov.in/website/apy-query-report-web",
+    role: "Cross-check and historical area, production and yield",
+    status: "source-identified"
+  },
+  {
+    id: "nhb-horticulture",
+    name: "National Horticulture Board",
+    url: "https://nhb.gov.in/",
+    role: "Horticulture crop area and production",
+    status: "source-identified"
+  }
+];
+
 function getAgricultureUniverse() {
   return STATE_APY.records.map((record) => ({
     id: record.commodity.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
@@ -19,14 +64,23 @@ function getAgricultureUniverse() {
       publicationDate: STATE_APY.source.publicationDate,
       status: STATE_APY.source.status
     },
-    districtDataStatus: "Not ingested yet",
-    demandDataStatus: "Not ingested yet",
-    supplyDataStatus: "Not ingested yet",
-    mandiDataStatus: "Not ingested yet"
+    dataAvailability: {
+      stateProduction: "available",
+      districtProduction: "source-identified",
+      historicalProduction: "source-identified",
+      horticulture: "source-identified",
+      mandiPrices: "source-identified",
+      demand: "not-yet-available",
+      supply: "not-yet-available",
+      trade: "not-yet-ingested",
+      valueChain: "not-yet-ingested",
+      infrastructure: "not-yet-ingested"
+    }
   }));
 }
 
 module.exports = {
   getAgricultureUniverse,
-  AGRICULTURE_UNIVERSE_SOURCE: STATE_APY.source
+  AGRICULTURE_UNIVERSE_SOURCE: STATE_APY.source,
+  AGRICULTURE_DATA_SOURCES
 };
