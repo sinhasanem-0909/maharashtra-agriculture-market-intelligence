@@ -6,6 +6,7 @@ const { runMarketScanner } = require("./src/scanner");
 const { SOURCES } = require("./src/sources");
 const { DISTRICTS, BUSINESS_LAYERS } = require("./src/scope");
 const { getAgricultureUniverse, AGRICULTURE_UNIVERSE_SOURCE } = require("./src/agricultureUniverse");
+const { getAgmarknetPrices } = require("./src/mandi");
 
 const portArgIndex = process.argv.indexOf("--port");
 const PORT = process.env.PORT || (portArgIndex !== -1 ? process.argv[portArgIndex + 1] : null) || 8080;
@@ -70,7 +71,7 @@ function dashboardPayload() {
   };
 }
 
-async function handleApi(req, res, pathname) {
+async function handleApi(req, res, pathname, url) {
   if (req.method === "GET" && pathname === "/api/dashboard") return sendJson(res, dashboardPayload());
   if (req.method === "GET" && pathname === "/api/scope") return sendJson(res, { districts: DISTRICTS, businessLayers: BUSINESS_LAYERS });
   if (req.method === "GET" && pathname === "/api/agriculture-universe") {
@@ -78,6 +79,20 @@ async function handleApi(req, res, pathname) {
       source: AGRICULTURE_UNIVERSE_SOURCE,
       records: getAgricultureUniverse()
     });
+  }
+  if (req.method === "GET" && pathname === "/api/mandi-prices") {
+    const commodity = url.searchParams.get("commodity");
+    if (!commodity) return sendJson(res, { error: "commodity is required" }, 400);
+    const days = Math.min(90, Math.max(1, Number(url.searchParams.get("days") || 30)));
+    try {
+      return sendJson(res, await getAgmarknetPrices(commodity, days));
+    } catch (error) {
+      return sendJson(res, {
+        error: "Unable to retrieve live AGMARKNET data",
+        detail: error.message,
+        source: "https://agmarknet.gov.in/"
+      }, 502);
+    }
   }
   if (req.method === "GET" && pathname === "/api/signals") return sendJson(res, readDb().signals);
   if (req.method === "GET" && pathname === "/api/evidence") return sendJson(res, readDb().evidenceItems);
@@ -157,7 +172,7 @@ const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`);
   try {
     if (url.pathname.startsWith("/api/")) {
-      await handleApi(req, res, url.pathname);
+      await handleApi(req, res, url.pathname, url);
       return;
     }
     serveStatic(res, url.pathname);
