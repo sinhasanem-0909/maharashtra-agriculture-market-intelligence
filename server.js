@@ -5,7 +5,7 @@ const { readDb, writeDb } = require("./src/store");
 const { runMarketScanner } = require("./src/scanner");
 const { SOURCES } = require("./src/sources");
 const { DISTRICTS, BUSINESS_LAYERS } = require("./src/scope");
-const { PRODUCT_INTELLIGENCE } = require("./src/productIntelligence");
+const { getAgricultureUniverse, AGRICULTURE_UNIVERSE_SOURCE } = require("./src/agricultureUniverse");
 
 const portArgIndex = process.argv.indexOf("--port");
 const PORT = process.env.PORT || (portArgIndex !== -1 ? process.argv[portArgIndex + 1] : null) || 8080;
@@ -49,6 +49,7 @@ function dashboardPayload() {
   const currentRunNew = lastRun ? lastRun.newSignals : 0;
   const coveredPairs = new Set(db.signals.map((signal) => `${signal.district}|${signal.businessLayer}`));
   const totalPairs = DISTRICTS.length * BUSINESS_LAYERS.length;
+  const agricultureUniverse = getAgricultureUniverse();
 
   return {
     scope: {
@@ -60,7 +61,7 @@ function dashboardPayload() {
     totals: {
       marketSignals: db.signals.length,
       evidenceItems: db.evidenceItems.length,
-      productIntelligenceRecords: db.productIntelligence.length || PRODUCT_INTELLIGENCE.length,
+      agricultureUniverseRecords: agricultureUniverse.length,
       newSignals: currentRunNew,
       updatedSignals: lastRun ? lastRun.updatedSignals : 0,
       highConfidenceOpportunities: highConfidence,
@@ -72,12 +73,15 @@ function dashboardPayload() {
 async function handleApi(req, res, pathname) {
   if (req.method === "GET" && pathname === "/api/dashboard") return sendJson(res, dashboardPayload());
   if (req.method === "GET" && pathname === "/api/scope") return sendJson(res, { districts: DISTRICTS, businessLayers: BUSINESS_LAYERS });
+  if (req.method === "GET" && pathname === "/api/agriculture-universe") {
+    return sendJson(res, {
+      source: AGRICULTURE_UNIVERSE_SOURCE,
+      records: getAgricultureUniverse()
+    });
+  }
   if (req.method === "GET" && pathname === "/api/signals") return sendJson(res, readDb().signals);
   if (req.method === "GET" && pathname === "/api/evidence") return sendJson(res, readDb().evidenceItems);
-  if (req.method === "GET" && pathname === "/api/products") {
-    const db = readDb();
-    return sendJson(res, db.productIntelligence.length ? db.productIntelligence : PRODUCT_INTELLIGENCE);
-  }
+  if (req.method === "GET" && pathname === "/api/products") return sendJson(res, getAgricultureUniverse());
   if (req.method === "GET" && pathname === "/api/sources") {
     const db = readDb();
     const sources = SOURCES.map((source) => db.sources.find((item) => item.id === source.id) || { ...source, lastChecked: null, signalsSupported: 0 });
