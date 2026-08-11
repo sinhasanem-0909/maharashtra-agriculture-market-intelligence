@@ -1,6 +1,6 @@
 .agriculture-title { align-items: flex-start; }
 .source-chip { min-width: 280px; padding: 12px 14px; border: 1px solid var(--border, #d9dee7); background: #fff; border-radius: 10px; display: flex; flex-direction: column; gap: 3px; }
-.source-chip span, .universe-stat span, .commodity-snapshot span { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #687386; }
+.source-chip span, .universe-stat span, .commodity-snapshot span, .mandi-kpis span { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #687386; }
 .source-chip a { color: #183b66; font-weight: 600; }
 .source-chip small, .universe-stat small, .commodity-snapshot small { color: #687386; font-size: 12px; }
 .universe-summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px; }
@@ -27,5 +27,9 @@
 .mini-table th, .mini-table td { padding: 10px; border-bottom: 1px solid #e6e9ee; text-align: left; }
 .mini-table th { width: 35%; color: #687386; font-weight: 500; }
 .source-line { margin-top: 14px; font-size: 13px; color: #687386; }
-@media (max-width: 1100px) { .universe-summary { grid-template-columns: repeat(2, 1fr); } .commodity-snapshot { grid-template-columns: repeat(3, 1fr); } }
-@media (max-width: 700px) { .universe-summary, .research-grid, .commodity-snapshot { grid-template-columns: 1fr; } .commodity-header { flex-direction: column; } .source-chip { min-width: 0; } }
+.mandi-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 14px 0; }
+.mandi-kpis > div { padding: 12px; border: 1px solid #e6e9ee; border-radius: 8px; display: flex; flex-direction: column; gap: 5px; }
+.mandi-kpis strong { font-size: 18px; color: #172033; }
+#mandiPriceContent .table-wrap { overflow-x: auto; }
+@media (max-width: 1100px) { .universe-summary { grid-template-columns: repeat(2, 1fr); } .commodity-snapshot { grid-template-columns: repeat(3, 1fr); } .mandi-kpis { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .universe-summary, .research-grid, .commodity-snapshot, .mandi-kpis { grid-template-columns: 1fr; } .commodity-header { flex-direction: column; } .source-chip { min-width: 0; } }
