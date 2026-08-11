@@ -1,0 +1,39 @@
+{
+  "source": {
+    "id": "maha-agriculture-state-apy-2024-25-third-advance",
+    "name": "Department of Agriculture, Government of Maharashtra — Third Advance Estimates of Area, Production and Productivity, 2024-25",
+    "url": "https://krishi.maharashtra.gov.in/Site/Upload/GR/THIRD%20ADVANCE%20ESTIMATES%202024-25%20STATE%20ABSTRACT.pdf",
+    "publicationDate": "2025-05-28",
+    "dataYear": "2024-25",
+    "status": "Third Advance Estimate",
+    "areaUnit": "'000 ha",
+    "productionUnit": "'000 tonnes",
+    "productivityUnit": "kg/ha"
+  },
+  "records": [
+    {"commodity":"Rice","category":"Cereals","area":1692.54,"production":4048.96,"productivity":2392.23},
+    {"commodity":"Wheat","category":"Cereals","area":1313.55,"production":2635.26,"productivity":2006.22},
+    {"commodity":"Jowar","category":"Cereals","area":1690.32,"production":1871.42,"productivity":1107.14},
+    {"commodity":"Bajra","category":"Cereals","area":443.36,"production":564.92,"productivity":1274.18},
+    {"commodity":"Ragi","category":"Cereals","area":68.67,"production":96.24,"productivity":1401.51},
+    {"commodity":"Maize","category":"Cereals","area":1696.53,"production":5481.74,"productivity":3231.14},
+    {"commodity":"Tur","category":"Pulses","area":1189.47,"production":1362.22,"productivity":1145.24},
+    {"commodity":"Mung","category":"Pulses","area":257.51,"production":167.48,"productivity":650.35},
+    {"commodity":"Udid","category":"Pulses","area":391.97,"production":326.83,"productivity":833.82},
+    {"commodity":"Groundnut","category":"Oilseeds","area":248.72,"production":381.39,"productivity":1533.44},
+    {"commodity":"Sesamum","category":"Oilseeds","area":36.69,"production":13.71,"productivity":373.54},
+    {"commodity":"Nigerseed","category":"Oilseeds","area":3.83,"production":0.81,"productivity":210.26},
+    {"commodity":"Sunflower","category":"Oilseeds","area":13.95,"production":6.89,"productivity":494.20},
+    {"commodity":"Soybean","category":"Oilseeds","area":5072.15,"production":8366.35,"productivity":1649.47},
+    {"commodity":"Linseed","category":"Oilseeds","area":5.96,"production":2.66,"productivity":445.66},
+    {"commodity":"Safflower","category":"Oilseeds","area":34.73,"production":26.21,"productivity":754.69},
+    {"commodity":"Sugarcane","category":"Cash Crops","area":1167.04,"production":117302.81,"productivity":100.51},
+    {"commodity":"Cotton (Lint)","category":"Cash Crops","area":3963.04,"production":10080.50,"productivity":432.42,"productionUnit":"'000 bales (170 kg each)","productivityUnit":"kg/ha"},
+    {"commodity":"Tobacco","category":"Cash Crops","area":0.82,"production":2.14,"productivity":2595.64}
+  ],
+  "notes": [
+    "Values are the total Kharif+Rabi+Summer figures in the published Maharashtra state abstract.",
+    "Cotton production is reported in 000 bales of 170 kg each in the source, not tonnes.",
+    "Sugarcane productivity is reported by the source in tonnes per hectare; the generic productivity unit is therefore overridden for that record in the application."
+  ]
+}
