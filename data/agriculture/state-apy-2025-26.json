@@ -1,0 +1,39 @@
+{
+  "source": {
+    "id": "maha-agriculture-state-apy-2025-26-third-advance",
+    "name": "Department of Agriculture, Government of Maharashtra — Third Advance Estimates of Area, Production and Yield, 2025-26",
+    "url": "https://krishi.maharashtra.gov.in/Site/Upload/GR/State_2026.pdf",
+    "publicationDate": "2026-05-08",
+    "dataYear": "2025-26",
+    "status": "Third Advance Estimate",
+    "areaUnit": "'000 ha",
+    "productionUnit": "'000 tonnes",
+    "productivityUnit": "kg/ha"
+  },
+  "records": [
+    {"commodity":"Rice","category":"Cereals","area":1686.971,"production":3437.855,"productivity":2037.886},
+    {"commodity":"Wheat","category":"Cereals","area":1527.067,"production":3509.572,"productivity":2298.243},
+    {"commodity":"Jowar","category":"Cereals","area":1504.057,"production":1814.023,"productivity":1073.113},
+    {"commodity":"Bajra","category":"Cereals","area":366.139,"production":408.745,"productivity":1111.367},
+    {"commodity":"Ragi","category":"Cereals","area":59.68,"production":81.98,"productivity":1375.956},
+    {"commodity":"Maize","category":"Cereals","area":2217.684,"production":6259.721,"productivity":2822.641},
+    {"commodity":"Tur","category":"Pulses","area":1221.44,"production":1171.453,"productivity":960.172},
+    {"commodity":"Mung","category":"Pulses","area":228.026,"production":130.991,"productivity":574.474},
+    {"commodity":"Udid","category":"Pulses","area":379.778,"production":239.138,"productivity":629.88},
+    {"commodity":"Groundnut","category":"Oilseeds","area":225.825,"production":316.081,"productivity":1399.87},
+    {"commodity":"Sesamum","category":"Oilseeds","area":31.105,"production":6.676,"productivity":214.617},
+    {"commodity":"Nigerseed","category":"Oilseeds","area":3.141,"production":0.871,"productivity":277.15},
+    {"commodity":"Sunflower","category":"Oilseeds","area":9.477,"production":7.242,"productivity":764.207},
+    {"commodity":"Soybean","category":"Oilseeds","area":4996.111,"production":4853.041,"productivity":971.365},
+    {"commodity":"Linseed","category":"Oilseeds","area":5.168,"production":2.083,"productivity":403.032},
+    {"commodity":"Safflower","category":"Oilseeds","area":30.723,"production":19.299,"productivity":128.154},
+    {"commodity":"Sugarcane","category":"Cash Crops","area":1371.873,"production":131648.121,"productivity":95.963},
+    {"commodity":"Cotton (Lint)","category":"Cash Crops","area":385.725,"production":7763.532,"productivity":342.385},
+    {"commodity":"Tobacco","category":"Cash Crops","area":0.827,"production":1.428,"productivity":1726.861}
+  ],
+  "notes": [
+    "This snapshot contains only crop-level records that can be represented from the published state PDF without inventing missing values.",
+    "District-level production is intentionally not populated here; it will come from the separate official district-wise 2025-26 APY source.",
+    "Horticulture commodities are intentionally not inserted into this snapshot; they will be ingested from the appropriate horticulture source rather than manually appended."
+  ]
+}
