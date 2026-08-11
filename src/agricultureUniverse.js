@@ -1,4 +1,5 @@
 const STATE_APY = require("../data/agriculture/state-apy-2025-26.json");
+const HISTORICAL_APY = require("../data/agriculture/state-apy-2024-25.json");
 
 const AGRICULTURE_DATA_SOURCES = [
   {
@@ -6,6 +7,13 @@ const AGRICULTURE_DATA_SOURCES = [
     name: "Department of Agriculture, Government of Maharashtra — State APY 2025–26 Third Advance Estimates",
     url: "https://krishi.maharashtra.gov.in/Site/Upload/GR/State_2026.pdf",
     role: "State crop area, production and productivity",
+    status: "ingested"
+  },
+  {
+    id: "maharashtra-state-apy-2024-25",
+    name: "Department of Agriculture, Government of Maharashtra — State APY 2024–25 Third Advance Estimates",
+    url: "https://krishi.maharashtra.gov.in/Site/Upload/GR/THIRD%20ADVANCE%20ESTIMATES%202024-25%20STATE%20ABSTRACT.pdf",
+    role: "Historical state crop area, production and productivity",
     status: "ingested"
   },
   {
@@ -45,38 +53,89 @@ const AGRICULTURE_DATA_SOURCES = [
   }
 ];
 
+const historicalByCommodity = new Map(HISTORICAL_APY.records.map((record) => [record.commodity, record]));
+
 function getAgricultureUniverse() {
-  return STATE_APY.records.map((record) => ({
-    id: record.commodity.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
-    commodity: record.commodity,
-    category: record.category,
-    year: STATE_APY.source.dataYear,
-    area: record.area,
-    production: record.production,
-    productivity: record.productivity,
-    areaUnit: STATE_APY.source.areaUnit,
-    productionUnit: STATE_APY.source.productionUnit,
-    productivityUnit: STATE_APY.source.productivityUnit,
-    source: {
-      id: STATE_APY.source.id,
-      name: STATE_APY.source.name,
-      url: STATE_APY.source.url,
-      publicationDate: STATE_APY.source.publicationDate,
-      status: STATE_APY.source.status
-    },
-    dataAvailability: {
-      stateProduction: "available",
-      districtProduction: "source-identified",
-      historicalProduction: "source-identified",
-      horticulture: "source-identified",
-      mandiPrices: "source-identified",
-      demand: "not-yet-available",
-      supply: "not-yet-available",
-      trade: "not-yet-ingested",
-      valueChain: "not-yet-ingested",
-      infrastructure: "not-yet-ingested"
-    }
-  }));
+  return STATE_APY.records.map((record) => {
+    const historical = historicalByCommodity.get(record.commodity);
+    const currentProductionUnit = record.productionUnit || STATE_APY.source.productionUnit;
+    const currentProductivityUnit = record.productivityUnit || STATE_APY.source.productivityUnit;
+    const historicalProductionUnit = historical?.productionUnit || HISTORICAL_APY.source.productionUnit;
+    const historicalProductivityUnit = historical?.productivityUnit || HISTORICAL_APY.source.productivityUnit;
+
+    const historicalSeries = [
+      historical && {
+        year: HISTORICAL_APY.source.dataYear,
+        area: historical.area,
+        production: historical.production,
+        productivity: historical.productivity,
+        areaUnit: historical.areaUnit || HISTORICAL_APY.source.areaUnit,
+        productionUnit: historicalProductionUnit,
+        productivityUnit: historicalProductivityUnit,
+        source: {
+          id: HISTORICAL_APY.source.id,
+          name: HISTORICAL_APY.source.name,
+          url: HISTORICAL_APY.source.url,
+          publicationDate: HISTORICAL_APY.source.publicationDate,
+          status: HISTORICAL_APY.source.status
+        }
+      },
+      {
+        year: STATE_APY.source.dataYear,
+        area: record.area,
+        production: record.production,
+        productivity: record.productivity,
+        areaUnit: record.areaUnit || STATE_APY.source.areaUnit,
+        productionUnit: currentProductionUnit,
+        productivityUnit: currentProductivityUnit,
+        source: {
+          id: STATE_APY.source.id,
+          name: STATE_APY.source.name,
+          url: STATE_APY.source.url,
+          publicationDate: STATE_APY.source.publicationDate,
+          status: STATE_APY.source.status
+        }
+      }
+    ].filter(Boolean);
+
+    const productionChange = historical
+      ? ((record.production - historical.production) / historical.production) * 100
+      : null;
+
+    return {
+      id: record.commodity.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""),
+      commodity: record.commodity,
+      category: record.category,
+      year: STATE_APY.source.dataYear,
+      area: record.area,
+      production: record.production,
+      productivity: record.productivity,
+      areaUnit: record.areaUnit || STATE_APY.source.areaUnit,
+      productionUnit: currentProductionUnit,
+      productivityUnit: currentProductivityUnit,
+      productionChangeFromPreviousYearPct: productionChange,
+      historicalSeries,
+      source: {
+        id: STATE_APY.source.id,
+        name: STATE_APY.source.name,
+        url: STATE_APY.source.url,
+        publicationDate: STATE_APY.source.publicationDate,
+        status: STATE_APY.source.status
+      },
+      dataAvailability: {
+        stateProduction: "available",
+        historicalProduction: historical ? "available" : "not-yet-available",
+        districtProduction: "source-identified",
+        horticulture: "source-identified",
+        mandiPrices: "source-identified",
+        demand: "not-yet-available",
+        supply: "not-yet-available",
+        trade: "not-yet-ingested",
+        valueChain: "not-yet-ingested",
+        infrastructure: "not-yet-ingested"
+      }
+    };
+  });
 }
 
 module.exports = {
