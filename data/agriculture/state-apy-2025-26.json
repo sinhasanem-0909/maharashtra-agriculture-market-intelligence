@@ -27,13 +27,14 @@
     {"commodity":"Soybean","category":"Oilseeds","area":4996.111,"production":4853.041,"productivity":971.365},
     {"commodity":"Linseed","category":"Oilseeds","area":5.168,"production":2.083,"productivity":403.032},
     {"commodity":"Safflower","category":"Oilseeds","area":30.723,"production":19.299,"productivity":128.154},
-    {"commodity":"Sugarcane","category":"Cash Crops","area":1371.873,"production":131648.121,"productivity":95.963},
-    {"commodity":"Cotton (Lint)","category":"Cash Crops","area":385.725,"production":7763.532,"productivity":342.385},
+    {"commodity":"Sugarcane","category":"Cash Crops","area":1371.873,"production":131648.121,"productivity":95.963,"productivityUnit":"tonnes/ha"},
+    {"commodity":"Cotton (Lint)","category":"Cash Crops","area":385.725,"production":7763.532,"productivity":342.385,"productionUnit":"'000 bales (170 kg each)","productivityUnit":"kg/ha"},
     {"commodity":"Tobacco","category":"Cash Crops","area":0.827,"production":1.428,"productivity":1726.861}
   ],
   "notes": [
     "This snapshot contains only crop-level records that can be represented from the published state PDF without inventing missing values.",
-    "District-level production is intentionally not populated here; it will come from the separate official district-wise 2025-26 APY source.",
-    "Horticulture commodities are intentionally not inserted into this snapshot; they will be ingested from the appropriate horticulture source rather than manually appended."
+    "District-level production is intentionally not populated here; it is a separate drill-down layer and is not required for the state-level historical production view.",
+    "Horticulture commodities are intentionally not inserted into this snapshot; they will be ingested from the appropriate horticulture source rather than manually appended.",
+    "Cotton production is reported in 000 bales of 170 kg each in the source, and sugarcane productivity is reported in tonnes per hectare."
   ]
 }
