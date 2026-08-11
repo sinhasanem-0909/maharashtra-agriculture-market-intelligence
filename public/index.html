@@ -22,7 +22,7 @@
           <button class="nav-item active" data-screen="dashboard">Dashboard</button>
           <button class="nav-item" data-screen="universe">Agriculture Universe</button>
           <button class="nav-item" data-screen="products">Commodity Intelligence</button>
-          <button class="nav-item" data-screen="processedByproducts">Processed & By-Products</button>
+          <button class="nav-item" data-screen="transformationUniverse">Transformation & By-Products</button>
           <button class="nav-item" data-screen="signals">Market Signals</button>
           <button class="nav-item" data-screen="sources">Research Sources</button>
           <button class="nav-item" data-screen="runs">Research Runs</button>
@@ -40,11 +40,10 @@
         </header>
 
         <section id="statusBanner" class="status-banner hidden" aria-live="polite"></section>
-
         <section id="dashboard" class="screen active"></section>
         <section id="universe" class="screen"></section>
         <section id="products" class="screen"></section>
-        <section id="processedByproducts" class="screen"></section>
+        <section id="transformationUniverse" class="screen"></section>
         <section id="signals" class="screen"></section>
         <section id="sources" class="screen"></section>
         <section id="runs" class="screen"></section>
@@ -53,9 +52,7 @@
     </div>
 
     <dialog id="signalDialog" class="detail-dialog">
-      <form method="dialog">
-        <button class="dialog-close" aria-label="Close">x</button>
-      </form>
+      <form method="dialog"><button class="dialog-close" aria-label="Close">x</button></form>
       <div id="signalDetail"></div>
     </dialog>
 
@@ -64,5 +61,6 @@
     <script src="/mandi-prices.js?v=20260811"></script>
     <script src="/agriculture-universe.js?v=20260811"></script>
     <script src="/processed-byproducts.js?v=20260811"></script>
+    <script src="/transformation-universe.js?v=20260811"></script>
   </body>
 </html>
