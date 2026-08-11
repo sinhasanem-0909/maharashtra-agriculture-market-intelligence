@@ -3,7 +3,7 @@
     "id": "maha-agriculture-state-apy-2024-25-third-advance",
     "name": "Department of Agriculture, Government of Maharashtra — Third Advance Estimates of Area, Production and Productivity, 2024-25",
     "url": "https://krishi.maharashtra.gov.in/Site/Upload/GR/THIRD%20ADVANCE%20ESTIMATES%202024-25%20STATE%20ABSTRACT.pdf",
-    "publicationDate": "2025-05-28",
+    "publicationDate": null,
     "dataYear": "2024-25",
     "status": "Third Advance Estimate",
     "areaUnit": "'000 ha",
@@ -27,13 +27,14 @@
     {"commodity":"Soybean","category":"Oilseeds","area":5072.15,"production":8366.35,"productivity":1649.47},
     {"commodity":"Linseed","category":"Oilseeds","area":5.96,"production":2.66,"productivity":445.66},
     {"commodity":"Safflower","category":"Oilseeds","area":34.73,"production":26.21,"productivity":754.69},
-    {"commodity":"Sugarcane","category":"Cash Crops","area":1167.04,"production":117302.81,"productivity":100.51},
+    {"commodity":"Sugarcane","category":"Cash Crops","area":1167.04,"production":117302.81,"productivity":100.51,"productivityUnit":"tonnes/ha"},
     {"commodity":"Cotton (Lint)","category":"Cash Crops","area":3963.04,"production":10080.50,"productivity":432.42,"productionUnit":"'000 bales (170 kg each)","productivityUnit":"kg/ha"},
     {"commodity":"Tobacco","category":"Cash Crops","area":0.82,"production":2.14,"productivity":2595.64}
   ],
   "notes": [
     "Values are the total Kharif+Rabi+Summer figures in the published Maharashtra state abstract.",
+    "The publication date is left blank because the date was not verified from the source document itself.",
     "Cotton production is reported in 000 bales of 170 kg each in the source, not tonnes.",
-    "Sugarcane productivity is reported by the source in tonnes per hectare; the generic productivity unit is therefore overridden for that record in the application."
+    "Sugarcane productivity is reported by the source in tonnes per hectare."
   ]
 }
