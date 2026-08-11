@@ -4,185 +4,22 @@
     "rule": "Only relationships explicitly supported by authoritative government or government agricultural research sources are displayed. No AI-generated relationships are treated as facts."
   },
   "records": [
-    {
-      "commodity": "Mango",
-      "product": "Mango pulp / concentrate",
-      "type": "Processed product",
-      "processingStage": "Fruit processing",
-      "application": "Juices, nectars, drinks, jams, bakery, dairy and confectionery",
-      "evidence": "APEDA documents mango pulp processing and identifies its conversion into juices, nectars, drinks, jams, fruit cheese, beverages, bakery fillings, ice cream, yogurt and confectionery.",
-      "sourceName": "APEDA — Mango Pulp",
-      "sourceUrl": "https://apeda.gov.in/MangoPulp"
-    },
-    {
-      "commodity": "Mango",
-      "product": "Mango puree",
-      "type": "Processed product",
-      "processingStage": "Fruit processing",
-      "application": "Food processing",
-      "evidence": "APEDA documents mango puree as a processed mango product.",
-      "sourceName": "APEDA — Frozen Fruits & Vegetables Study",
-      "sourceUrl": "https://apeda.gov.in/apedawebsite/trade_promotion/study_report/froz_veg.pdf"
-    },
-    {
-      "commodity": "Mango",
-      "product": "Mango dice",
-      "type": "Processed product",
-      "processingStage": "Fruit processing",
-      "application": "Value-added fruit products",
-      "evidence": "APEDA FarmerConnect documents mango dices among value-added fruit offerings from an exporter with processing operations spanning Maharashtra and other states.",
-      "sourceName": "APEDA FarmerConnect — ITC certification/profile",
-      "sourceUrl": "https://farmerconnect.apeda.gov.in/Buyer/ViewBuyerCertification?BuyerId=196443&Certification=Certification"
-    },
-    {
-      "commodity": "Mango",
-      "product": "Mango concentrate",
-      "type": "Processed product",
-      "processingStage": "Fruit processing",
-      "application": "Value-added fruit products",
-      "evidence": "APEDA FarmerConnect documents mango concentrate among value-added fruit offerings from an exporter with processing infrastructure linked to Maharashtra fruit-growing belts.",
-      "sourceName": "APEDA FarmerConnect — ITC certification/profile",
-      "sourceUrl": "https://farmerconnect.apeda.gov.in/Buyer/ViewBuyerCertification?BuyerId=196443&Certification=Certification"
-    },
-    {
-      "commodity": "Mango",
-      "product": "Mango pulp processing residues",
-      "type": "Not classified",
-      "processingStage": "Not available",
-      "application": "Not available",
-      "evidence": "No authoritative source has yet been ingested that supports a specific derived-product relationship for mango processing residues. This placeholder is intentionally not presented as a fact.",
-      "sourceName": "Not available",
-      "sourceUrl": ""
-    },
-    {
-      "commodity": "Grapes",
-      "product": "Raisins",
-      "type": "Processed product",
-      "processingStage": "Drying / dehydration",
-      "application": "Food",
-      "evidence": "The authoritative agricultural research source set documents raisin production as a grape-processing pathway.",
-      "sourceName": "ICAR — Agricultural processing research",
-      "sourceUrl": "https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"
-    },
-    {
-      "commodity": "Banana",
-      "product": "Banana fibre",
-      "type": "Derived product",
-      "processingStage": "Fibre extraction",
-      "application": "Fibre-based products",
-      "evidence": "ICAR agricultural processing research identifies fibre extraction and value addition from agricultural residues and crops; the Maharashtra banana product relationship is retained only where supported by the cited research source set.",
-      "sourceName": "ICAR — Agricultural processing research",
-      "sourceUrl": "https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"
-    },
-    {
-      "commodity": "Sugarcane",
-      "product": "Molasses",
-      "type": "Co-product",
-      "processingStage": "Sugar processing",
-      "application": "Fermentation / industrial uses",
-      "evidence": "ICAR identifies molasses as a sugar-industry by-product in its agricultural processing and awareness material.",
-      "sourceName": "ICAR",
-      "sourceUrl": "https://www.icar.gov.in/index.php/en/icar-sbi-coimbatore-organises-awareness-campaign-science-based-nutrient-and-input-management"
-    },
-    {
-      "commodity": "Sugarcane",
-      "product": "Bagasse",
-      "type": "By-product",
-      "processingStage": "Sugar processing",
-      "application": "Energy and pulp-related uses",
-      "evidence": "ICAR identifies bagasse as a sugar-industry by-product and discusses its use as a feedstock for energy and pulp applications.",
-      "sourceName": "ICAR",
-      "sourceUrl": "https://www.icar.gov.in/index.php/en/icar-sbi-coimbatore-organises-awareness-campaign-science-based-nutrient-and-input-management"
-    },
-    {
-      "commodity": "Soybean",
-      "product": "Soybean oil",
-      "type": "Processed product",
-      "processingStage": "Oil extraction",
-      "application": "Food and industrial uses",
-      "evidence": "ICAR agricultural processing research documents soybean processing and product/value-addition pathways.",
-      "sourceName": "ICAR — Agricultural processing research",
-      "sourceUrl": "https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"
-    },
-    {
-      "commodity": "Soybean",
-      "product": "Soybean meal",
-      "type": "Co-product",
-      "processingStage": "Oil extraction",
-      "application": "Animal feed",
-      "evidence": "ICAR agricultural processing research documents soybean processing and associated product/value-addition pathways.",
-      "sourceName": "ICAR — Agricultural processing research",
-      "sourceUrl": "https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"
-    },
-    {
-      "commodity": "Groundnut",
-      "product": "Groundnut oil",
-      "type": "Processed product",
-      "processingStage": "Oil extraction",
-      "application": "Food",
-      "evidence": "ICAR agricultural processing research documents groundnut processing and value addition.",
-      "sourceName": "ICAR — Agricultural processing research",
-      "sourceUrl": "https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"
-    },
-    {
-      "commodity": "Groundnut",
-      "product": "Groundnut cake",
-      "type": "Co-product",
-      "processingStage": "Oil extraction",
-      "application": "Animal feed",
-      "evidence": "ICAR agricultural processing research documents groundnut processing and value addition.",
-      "sourceName": "ICAR — Agricultural processing research",
-      "sourceUrl": "https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"
-    },
-    {
-      "commodity": "Wheat",
-      "product": "Wheat flour",
-      "type": "Processed product",
-      "processingStage": "Milling",
-      "application": "Food",
-      "evidence": "ICAR agricultural processing research documents cereal processing and value addition including milling pathways.",
-      "sourceName": "ICAR — Agricultural processing research",
-      "sourceUrl": "https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"
-    },
-    {
-      "commodity": "Rice",
-      "product": "Rice bran",
-      "type": "By-product",
-      "processingStage": "Milling",
-      "application": "Food and industrial processing",
-      "evidence": "APEDA's official exporter directory recognizes de-oiled rice bran as an agricultural processed-product category.",
-      "sourceName": "APEDA — Agri Exchange exporter directory",
-      "sourceUrl": "https://agriexchange.apeda.gov.in/AgriDirectory/Exporter/Exporters"
-    },
-    {
-      "commodity": "Tur",
-      "product": "Pigeon pea dal",
-      "type": "Processed product",
-      "processingStage": "Dal milling",
-      "application": "Food",
-      "evidence": "ICAR agricultural processing research documents dal milling and pulse processing pathways.",
-      "sourceName": "ICAR — Agricultural processing research",
-      "sourceUrl": "https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"
-    },
-    {
-      "commodity": "Moong",
-      "product": "Green gram dal",
-      "type": "Processed product",
-      "processingStage": "Dal milling",
-      "application": "Food",
-      "evidence": "ICAR agricultural processing research documents dal milling and pulse processing pathways.",
-      "sourceName": "ICAR — Agricultural processing research",
-      "sourceUrl": "https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"
-    },
-    {
-      "commodity": "Urad",
-      "product": "Black gram dal",
-      "type": "Processed product",
-      "processingStage": "Dal milling",
-      "application": "Food",
-      "evidence": "ICAR agricultural processing research documents dal milling and pulse processing pathways.",
-      "sourceName": "ICAR — Agricultural processing research",
-      "sourceUrl": "https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"
-    }
+    {"commodity":"Mango","product":"Mango pulp / concentrate","type":"Processed product","processingStage":"Fruit processing","application":"Juices, nectars, drinks, jams, bakery, dairy and confectionery","evidence":"APEDA documents mango pulp processing and identifies its conversion into juices, nectars, drinks, jams, fruit cheese, beverages, bakery fillings, ice cream, yogurt and confectionery.","sourceName":"APEDA — Mango Pulp","sourceUrl":"https://apeda.gov.in/MangoPulp"},
+    {"commodity":"Mango","product":"Mango puree","type":"Processed product","processingStage":"Fruit processing","application":"Food processing","evidence":"APEDA documents mango puree as a processed mango product.","sourceName":"APEDA — Frozen Fruits & Vegetables Study","sourceUrl":"https://apeda.gov.in/apedawebsite/trade_promotion/study_report/froz_veg.pdf"},
+    {"commodity":"Mango","product":"Mango dice","type":"Processed product","processingStage":"Fruit processing","application":"Value-added fruit products","evidence":"APEDA FarmerConnect documents mango dices among value-added fruit offerings from an exporter with processing operations spanning Maharashtra and other states.","sourceName":"APEDA FarmerConnect — ITC profile","sourceUrl":"https://farmerconnect.apeda.gov.in/Buyer/ViewBuyerCertification?BuyerId=196443&Certification=Certification"},
+    {"commodity":"Mango","product":"Mango concentrate","type":"Processed product","processingStage":"Fruit processing","application":"Value-added fruit products","evidence":"APEDA FarmerConnect documents mango concentrate among value-added fruit offerings from an exporter with processing infrastructure linked to Maharashtra fruit-growing belts.","sourceName":"APEDA FarmerConnect — ITC profile","sourceUrl":"https://farmerconnect.apeda.gov.in/Buyer/ViewBuyerCertification?BuyerId=196443&Certification=Certification"},
+    {"commodity":"Grapes","product":"Raisins","type":"Processed product","processingStage":"Drying / dehydration","application":"Food","evidence":"ICAR agricultural processing research documents raisin production as a grape-processing pathway.","sourceName":"ICAR — Agricultural processing research","sourceUrl":"https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"},
+    {"commodity":"Banana","product":"Banana fibre","type":"Derived product","processingStage":"Fibre extraction","application":"Fibre-based products","evidence":"ICAR agricultural processing research documents fibre extraction and agricultural value-addition pathways.","sourceName":"ICAR — Agricultural processing research","sourceUrl":"https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"},
+    {"commodity":"Sugarcane","product":"Molasses","type":"Co-product","processingStage":"Sugar processing","application":"Fermentation / industrial uses","evidence":"ICAR identifies molasses as a sugar-industry by-product.","sourceName":"ICAR","sourceUrl":"https://www.icar.gov.in/index.php/en/icar-sbi-coimbatore-organises-awareness-campaign-science-based-nutrient-and-input-management"},
+    {"commodity":"Sugarcane","product":"Bagasse","type":"By-product","processingStage":"Sugar processing","application":"Energy and pulp-related uses","evidence":"ICAR identifies bagasse as a sugar-industry by-product and discusses energy and pulp applications.","sourceName":"ICAR","sourceUrl":"https://www.icar.gov.in/index.php/en/icar-sbi-coimbatore-organises-awareness-campaign-science-based-nutrient-and-input-management"},
+    {"commodity":"Soybean","product":"Soybean oil","type":"Processed product","processingStage":"Oil extraction","application":"Food and industrial uses","evidence":"ICAR agricultural processing research documents soybean processing and product/value-addition pathways.","sourceName":"ICAR — Agricultural processing research","sourceUrl":"https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"},
+    {"commodity":"Soybean","product":"Soybean meal","type":"Co-product","processingStage":"Oil extraction","application":"Animal feed","evidence":"ICAR agricultural processing research documents soybean processing and associated product/value-addition pathways.","sourceName":"ICAR — Agricultural processing research","sourceUrl":"https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"},
+    {"commodity":"Groundnut","product":"Groundnut oil","type":"Processed product","processingStage":"Oil extraction","application":"Food","evidence":"ICAR agricultural processing research documents groundnut processing and value addition.","sourceName":"ICAR — Agricultural processing research","sourceUrl":"https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"},
+    {"commodity":"Groundnut","product":"Groundnut cake","type":"Co-product","processingStage":"Oil extraction","application":"Animal feed","evidence":"ICAR agricultural processing research documents groundnut processing and value addition.","sourceName":"ICAR — Agricultural processing research","sourceUrl":"https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"},
+    {"commodity":"Wheat","product":"Wheat flour","type":"Processed product","processingStage":"Milling","application":"Food","evidence":"ICAR agricultural processing research documents cereal processing and milling pathways.","sourceName":"ICAR — Agricultural processing research","sourceUrl":"https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"},
+    {"commodity":"Rice","product":"Rice bran","type":"By-product","processingStage":"Milling","application":"Food and industrial processing","evidence":"APEDA's official exporter directory recognizes de-oiled rice bran as an agricultural processed-product category.","sourceName":"APEDA — Agri Exchange exporter directory","sourceUrl":"https://agriexchange.apeda.gov.in/AgriDirectory/Exporter/Exporters"},
+    {"commodity":"Tur","product":"Pigeon pea dal","type":"Processed product","processingStage":"Dal milling","application":"Food","evidence":"ICAR agricultural processing research documents dal milling and pulse processing pathways.","sourceName":"ICAR — Agricultural processing research","sourceUrl":"https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"},
+    {"commodity":"Moong","product":"Green gram dal","type":"Processed product","processingStage":"Dal milling","application":"Food","evidence":"ICAR agricultural processing research documents dal milling and pulse processing pathways.","sourceName":"ICAR — Agricultural processing research","sourceUrl":"https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"},
+    {"commodity":"Urad","product":"Black gram dal","type":"Processed product","processingStage":"Dal milling","application":"Food","evidence":"ICAR agricultural processing research documents dal milling and pulse processing pathways.","sourceName":"ICAR — Agricultural processing research","sourceUrl":"https://icar.gov.in/index.php/en/transforming-agro-processing-through-innovation-technology-and-capacity-building-success-story-icar"}
   ]
 }
