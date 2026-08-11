@@ -9,51 +9,9 @@
     "productionUnit": "'000 MT"
   },
   "categories": [
-    {
-      "category": "Fruits",
-      "area": 896.56,
-      "production": 16840.69,
-      "areaChangePct": 2.6,
-      "productionChangePct": 12.5,
-      "crops": [
-        {"commodity":"Mango","area":167.0},
-        {"commodity":"Orange / Mandarin","area":148.0},
-        {"commodity":"Banana","area":141.0},
-        {"commodity":"Grapes","area":119.0},
-        {"commodity":"Pomegranate","area":107.0},
-        {"commodity":"Mosambi","area":80.0}
-      ]
-    },
-    {
-      "category": "Vegetables",
-      "area": 1255.60,
-      "production": 14981.52,
-      "areaChangePct": 32.7,
-      "productionChangePct": -0.5,
-      "crops": [
-        {"commodity":"Onion","area":692.0},
-        {"commodity":"Tomato","area":55.0},
-        {"commodity":"Green Chilli","area":43.0}
-      ]
-    },
-    {
-      "category": "Spices",
-      "area": 130.72,
-      "production": 1733.76,
-      "areaChangePct": 14.7,
-      "productionChangePct": -6.8,
-      "crops": [
-        {"commodity":"Turmeric"},
-        {"commodity":"Red Chilli"},
-        {"commodity":"Coriander"},
-        {"commodity":"Cumin"},
-        {"commodity":"Garlic"},
-        {"commodity":"Ginger"},
-        {"commodity":"Tamarind"},
-        {"commodity":"Curry Leaf"},
-        {"commodity":"Mint"}
-      ]
-    }
+    {"category":"Fruits","area":896.56,"production":16840.69,"areaChangePct":2.6,"productionChangePct":12.5,"crops":[{"commodity":"Mango","area":167.0},{"commodity":"Orange / Mandarin","area":148.0},{"commodity":"Banana","area":141.0},{"commodity":"Grapes","area":119.0},{"commodity":"Pomegranate","area":107.0},{"commodity":"Mosambi","area":80.0}]},
+    {"category":"Vegetables","area":1255.60,"production":14981.52,"areaChangePct":32.7,"productionChangePct":-0.5,"crops":[{"commodity":"Onion","area":692.0},{"commodity":"Tomato","area":55.0},{"commodity":"Green Chilli","area":43.0}]},
+    {"category":"Spices","area":130.72,"production":1733.76,"areaChangePct":14.7,"productionChangePct":-1.1,"crops":[{"commodity":"Turmeric"},{"commodity":"Red Chilli"},{"commodity":"Coriander"},{"commodity":"Cumin"},{"commodity":"Garlic"},{"commodity":"Ginger"},{"commodity":"Tamarind"},{"commodity":"Curry Leaf"},{"commodity":"Mint"}]}
   ],
   "notes": [
     "Category totals are Maharashtra values reported in the Economic Survey of Maharashtra 2025-26 and sourced from HAPIS, Government of India.",
