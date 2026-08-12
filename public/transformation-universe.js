@@ -2,16 +2,17 @@ const transformationState = { records: [], category: "All", search: "", selected
 const transformationCategories = ["All", "Cereals", "Pulses", "Oilseeds", "Cash Crops", "Fruits", "Vegetables", "Spices"];
 
 async function loadTransformationUniverse() {
-  const [baseResponse, vegetableResponse] = await Promise.all([
+  const [baseResponse, vegetableResponse, fruitResponse] = await Promise.all([
     fetch("/data/transformation/transformation-universe.json"),
-    fetch("/data/transformation/vegetable-transformations.json")
+    fetch("/data/transformation/vegetable-transformations.json"),
+    fetch("/data/transformation/fruit-transformation.json")
   ]);
-  if (!baseResponse.ok || !vegetableResponse.ok) throw new Error("Transformation universe could not be loaded");
-  const [basePayload, vegetablePayload] = await Promise.all([baseResponse.json(), vegetableResponse.json()]);
-  transformationState.records = [...(basePayload.records || []), ...(vegetablePayload.records || [])];
+  if (!baseResponse.ok || !vegetableResponse.ok || !fruitResponse.ok) throw new Error("Transformation universe could not be loaded");
+  const [basePayload, vegetablePayload, fruitPayload] = await Promise.all([baseResponse.json(), vegetableResponse.json(), fruitResponse.json()]);
+  transformationState.records = [...(basePayload.records || []), ...(vegetablePayload.records || []), ...(fruitPayload.records || [])];
   transformationState.metadata = {
     ...(basePayload.metadata || {}),
-    lastVerified: [basePayload.metadata?.lastVerified, vegetablePayload.metadata?.lastVerified].filter(Boolean).sort().pop() || "Not available"
+    lastVerified: [basePayload.metadata?.lastVerified, vegetablePayload.metadata?.lastVerified, fruitPayload.metadata?.lastVerified].filter(Boolean).sort().pop() || "Not available"
   };
   renderTransformationUniverse();
 }
