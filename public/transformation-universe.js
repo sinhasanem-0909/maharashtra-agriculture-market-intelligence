@@ -1,12 +1,18 @@
-const transformationState = { records: [], category: "All", search: "", selected: null };
+const transformationState = { records: [], category: "All", search: "", selected: null, metadata: {} };
 const transformationCategories = ["All", "Cereals", "Pulses", "Oilseeds", "Cash Crops", "Fruits", "Vegetables", "Spices"];
 
 async function loadTransformationUniverse() {
-  const response = await fetch("/data/transformation/transformation-universe.json");
-  if (!response.ok) throw new Error("Transformation universe could not be loaded");
-  const payload = await response.json();
-  transformationState.records = payload.records || [];
-  transformationState.metadata = payload.metadata || {};
+  const [baseResponse, vegetableResponse] = await Promise.all([
+    fetch("/data/transformation/transformation-universe.json"),
+    fetch("/data/transformation/vegetable-transformations.json")
+  ]);
+  if (!baseResponse.ok || !vegetableResponse.ok) throw new Error("Transformation universe could not be loaded");
+  const [basePayload, vegetablePayload] = await Promise.all([baseResponse.json(), vegetableResponse.json()]);
+  transformationState.records = [...(basePayload.records || []), ...(vegetablePayload.records || [])];
+  transformationState.metadata = {
+    ...(basePayload.metadata || {}),
+    lastVerified: [basePayload.metadata?.lastVerified, vegetablePayload.metadata?.lastVerified].filter(Boolean).sort().pop() || "Not available"
+  };
   renderTransformationUniverse();
 }
 
@@ -16,10 +22,11 @@ function renderTransformationUniverse() {
   const filtered = transformationState.records.filter((r) => {
     const categoryMatch = transformationState.category === "All" || r.category === transformationState.category;
     const q = transformationState.search.toLowerCase();
-    const text = [r.commodity, r.sourcePart, r.intermediate, r.derivedProduct, r.endUse, r.industry].join(" ").toLowerCase();
+    const text = [r.commodity, r.sourcePart, r.processingRoute, r.intermediate, r.derivedProduct, r.endUse, r.industry].join(" ").toLowerCase();
     return categoryMatch && (!q || text.includes(q));
   });
   const commodities = new Set(filtered.map((r) => r.commodity)).size;
+  const categoryCounts = transformationCategories.filter((c) => c !== "All").map((c) => [c, transformationState.records.filter((r) => r.category === c).length]);
   target.innerHTML = `
     <div class="section-title">
       <div>
@@ -29,7 +36,10 @@ function renderTransformationUniverse() {
       </div>
     </div>
     <div class="agriculture-category-tabs transformation-tabs">
-      ${transformationCategories.map((c) => `<button class="agriculture-category-tab ${transformationState.category === c ? "active" : ""}" data-t-category="${c}">${c}</button>`).join("")}
+      ${transformationCategories.map((c) => {
+        const count = c === "All" ? transformationState.records.length : categoryCounts.find(([name]) => name === c)?.[1] || 0;
+        return `<button class="agriculture-category-tab ${transformationState.category === c ? "active" : ""}" data-t-category="${c}">${c}<span>${count}</span></button>`;
+      }).join("")}
     </div>
     <div class="universe-summary">
       <div class="universe-stat"><span>Evidence pathways</span><strong>${filtered.length}</strong></div>
